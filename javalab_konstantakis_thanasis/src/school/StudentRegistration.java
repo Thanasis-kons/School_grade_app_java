@@ -25,7 +25,7 @@ public static void insertStudent(String fname, String lname, String bday, String
         stmt.setString(5, address);
         stmt.executeUpdate();
         
-        System.out.println("επιτυχής εγγραφή!");
+        System.out.println("successful registration!");
         conn.close();
               
        
