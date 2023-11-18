@@ -35,8 +35,8 @@ public class school_Gui {
     private JComboBox<String> cbox_Gender;
     private JTextField txt_Address;
     private JComboBox<String> cbox_grades;
-    private JComboBox<String> cboxSearchStudent; // Updated variable name
-    private JComboBox<String> cboxSearchStudentGrades; // Updated variable name
+    private JComboBox<String> cboxSearchStudent;
+    private JComboBox<String> cboxSearchStudentGrades;
     private static final String URL = "jdbc:mysql://localhost:3306/school_db";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
@@ -78,7 +78,7 @@ public class school_Gui {
         frame.getContentPane().add(tabbedPane);
 
         JPanel panel = new JPanel();
-        tabbedPane.addTab("Εγγραφη", null, panel, null);
+        tabbedPane.addTab("Registration", null, panel, null);
         panel.setLayout(null);
 
         txt_Fname = new JTextField();
@@ -98,9 +98,9 @@ public class school_Gui {
 
         cbox_Gender = new JComboBox<String>();
         cbox_Gender.setBounds(271, 117, 96, 21);
-        cbox_Gender.addItem("Αρσενικό");
-        cbox_Gender.addItem("Θηλυκό");
-        cbox_Gender.addItem("Άλλο");
+        cbox_Gender.addItem("Male");
+        cbox_Gender.addItem("Female");
+        cbox_Gender.addItem("Other");
         panel.add(cbox_Gender);
 
         txt_Address = new JTextField();
@@ -108,7 +108,7 @@ public class school_Gui {
         panel.add(txt_Address);
         txt_Address.setColumns(10);
 
-        JButton btn_insStudent = new JButton("Εγγραφή");
+        JButton btn_insStudent = new JButton("Register");
         btn_insStudent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String fname = txt_Fname.getText();
@@ -132,7 +132,7 @@ public class school_Gui {
                     conn.close();
 
                     // Display success message
-                    JOptionPane.showMessageDialog(null, "Επιτυχής εγγραφή μαθητή.");
+                    JOptionPane.showMessageDialog(null, "Student registration successful.");
 
                     // Clear the text fields
                     txt_Fname.setText("");
@@ -141,7 +141,7 @@ public class school_Gui {
                     cbox_Gender.setSelectedIndex(0);
                     txt_Address.setText("");
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Σφάλμα κατά την εγγραφή μαθητή.");
+                    JOptionPane.showMessageDialog(null, "Error during student registration.");
                     ex.printStackTrace();
                 }
             }
@@ -149,36 +149,36 @@ public class school_Gui {
         btn_insStudent.setBounds(159, 177, 114, 21);
         panel.add(btn_insStudent);
 
-        JLabel lblNewLabel = new JLabel("Ονομα");
+        JLabel lblNewLabel = new JLabel("First Name");
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(87, 33, 65, 16);
         panel.add(lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("Επώνυμο");
+        JLabel lblNewLabel_1 = new JLabel("Last Name");
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setBounds(87, 60, 65, 16);
         panel.add(lblNewLabel_1);
 
-        JLabel lblNewLabel_2 = new JLabel("Ημ.γενήσεως");
+        JLabel lblNewLabel_2 = new JLabel("Date of Birth");
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_2.setBounds(87, 89, 65, 16);
         panel.add(lblNewLabel_2);
 
-        JLabel lblNewLabel_3 = new JLabel("Φύλο");
+        JLabel lblNewLabel_3 = new JLabel("Gender");
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_3.setBounds(87, 123, 65, 13);
         panel.add(lblNewLabel_3);
 
-        JLabel lblNewLabel_4 = new JLabel("Διευθυνση");
+        JLabel lblNewLabel_4 = new JLabel("Address");
         lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_4.setBounds(87, 149, 65, 16);
         panel.add(lblNewLabel_4);
 
         JPanel panel_1 = new JPanel();
-        tabbedPane.addTab("Β. μαθηματων", null, panel_1, null);
+        tabbedPane.addTab("Grade entry", null, panel_1, null);
         panel_1.setLayout(null);
 
-        JComboBox<String> cbox_student = new JComboBox<String>(); // Updated variable name
+        JComboBox<String> cbox_student = new JComboBox<String>();
         cbox_student.setBounds(60, 67, 181, 31);
         panel_1.add(cbox_student);
 
@@ -221,12 +221,12 @@ public class school_Gui {
             e.printStackTrace();
         }
 
-        JLabel lblNewLabel_5 = new JLabel("Επιλέξτε μαθητη");
+        JLabel lblNewLabel_5 = new JLabel("Select Student");
         lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_5.setBounds(85, 30, 104, 22);
         panel_1.add(lblNewLabel_5);
 
-        JLabel lblNewLabel_6 = new JLabel("Επιλέξτε Μαθημα");
+        JLabel lblNewLabel_6 = new JLabel("Select Course");
         lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_6.setBounds(428, 33, 120, 17);
         panel_1.add(lblNewLabel_6);
@@ -245,7 +245,7 @@ public class school_Gui {
         cbox_grades.addItem("9");
         cbox_grades.addItem("10");
 
-        JButton btn_grade_insertion = new JButton("εισαγωγη βαθμολογιας");
+        JButton btn_grade_insertion = new JButton("Grade Entry");
         btn_grade_insertion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 try {
@@ -263,7 +263,7 @@ public class school_Gui {
                     conn.close();
 
                     // Display success message
-                    JOptionPane.showMessageDialog(null, "επιτυχής εισαγωγη βαθμολογιας.");
+                    JOptionPane.showMessageDialog(null, "Grade entry successful.");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
                 }
@@ -273,21 +273,21 @@ public class school_Gui {
         btn_grade_insertion.setBounds(239, 169, 151, 21);
         panel_1.add(btn_grade_insertion);
 
-        JLabel lblNewLabel_7 = new JLabel("βαθμολογια");
+        JLabel lblNewLabel_7 = new JLabel("Grade");
         lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_7.setBounds(264, 111, 94, 22);
         panel_1.add(lblNewLabel_7);
 
         JPanel panel_2 = new JPanel();
-        tabbedPane.addTab("αναζητηση", null, panel_2, null);
+        tabbedPane.addTab("Search", null, panel_2, null);
         panel_2.setLayout(null);
 
-        JLabel lblSearchStudent = new JLabel("Αναζήτηση Μαθητή");
+        JLabel lblSearchStudent = new JLabel("Search Student");
         lblSearchStudent.setHorizontalAlignment(SwingConstants.CENTER);
         lblSearchStudent.setBounds(24, 10, 125, 13);
         panel_2.add(lblSearchStudent);
 
-        cboxSearchStudentGrades = new JComboBox<String>(); // Updated variable name
+        cboxSearchStudentGrades = new JComboBox<String>();
         cboxSearchStudentGrades.setBounds(177, 7, 218, 19);
         panel_2.add(cboxSearchStudentGrades);
 
@@ -309,7 +309,7 @@ public class school_Gui {
             e.printStackTrace();
         }
 
-        JButton btnSearch = new JButton("Αναζήτηση");
+        JButton btnSearch = new JButton("Search");
         btnSearch.setBackground(new Color(255, 255, 255));
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -323,8 +323,8 @@ public class school_Gui {
 
                     // Create a DefaultTableModel and set it as the table model for table_show
                     DefaultTableModel model = new DefaultTableModel();
-                    model.addColumn("Μαθήμα");
-                    model.addColumn("Βαθμός");
+                    model.addColumn("Course");
+                    model.addColumn("Grade");
 
                     // Populate the table with the data from the ResultSet
                     while (resultSet.next()) {
@@ -351,10 +351,10 @@ public class school_Gui {
         panel_2.add(btnSearch);
 
         JPanel panel_3 = new JPanel();
-        tabbedPane.addTab("Διαγραφη", null, panel_3, null);
+        tabbedPane.addTab("Deletion", null, panel_3, null);
         panel_3.setLayout(null);
 
-        JLabel lblStudentId = new JLabel("Αριθμός Μαθητή:");
+        JLabel lblStudentId = new JLabel("Student Number:");
         lblStudentId.setHorizontalAlignment(SwingConstants.CENTER);
         lblStudentId.setBounds(193, 40, 130, 16);
         panel_3.add(lblStudentId);
@@ -364,7 +364,7 @@ public class school_Gui {
         panel_3.add(txtStudentId);
         txtStudentId.setColumns(10);
 
-        JButton btnDelete = new JButton("Διαγραφή");
+        JButton btnDelete = new JButton("Delete");
         btnDelete.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -386,9 +386,9 @@ public class school_Gui {
                     conn.close();
 
                     // Display success message
-                    JOptionPane.showMessageDialog(null, "Ο μαθητής διαγράφηκε με επιτυχία.");
+                    JOptionPane.showMessageDialog(null, "Student deleted successfully.");
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Σφάλμα κατά τη διαγραφή του μαθητή.");
+                    JOptionPane.showMessageDialog(null, "Error deleting student.");
                     ex.printStackTrace();
                 }
             }
